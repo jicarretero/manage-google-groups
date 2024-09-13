@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+client_secret_apps.googleusercontent.com.json
+token.json
+
+
 # Distribution / packaging
 .Python
 build/
