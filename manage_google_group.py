@@ -6,7 +6,7 @@ from google_auth_oauthlib.flow import InstalledAppFlow
 from googleapiclient.discovery import build
 
 # Set the scopes you need
-SCOPES = ['https://www.googleapis.com/auth/admin.directory.group']
+SCOPES = ['https://www.googleapis.com/auth/admin.directory.group', 'https://www.googleapis.com/auth/apps.groups.settings']
 
 # Path to the credentials file you downloaded from Google Cloud
 CLIENT_SECRET_FILE = 'client_secret_apps.googleusercontent.com.json'

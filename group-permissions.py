@@ -3,6 +3,7 @@
 from manage_google_group import get_credentials
 from googleapiclient.discovery import build
 import argparse
+import json
 
 
 valid_moderation_levels = ['MODERATE_NON_MEMBERS', 'MODERATE_ALL_MESSAGES', 'MODERATE_NEW_MEMBERS', 'MODERATE_NONE']
@@ -33,13 +34,13 @@ def set_permissions(group_email, moderation_level, who_can_post):
     group_settings = service.groups().get(groupUniqueId=group_email).execute()
 
     # Update the settings to moderate external messages
-    group_settings['whoCanPostMessage'] = moderation_level
-    group_settings['messageModerationLevel'] = who_can_post
+    group_settings['whoCanPostMessage'] = who_can_post
+    group_settings['messageModerationLevel'] = moderation_level
 
     try:
         # Apply the updated settings
         result = service.groups().update(groupUniqueId=group_email, body=group_settings).execute()
-        print(f"Updated moderation settings for group {group_email}.")
+        print(json.dumps(result))
     except Exception as e:
         print(f'An error occurred: {e}')
 
