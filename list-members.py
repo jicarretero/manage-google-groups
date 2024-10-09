@@ -16,6 +16,13 @@ if __name__ == "__main__":
     args = parse_args()
 
     if args.group_email is not None:
-        list_group_members(args.group_email)
+        members = list_group_members(args.group_email)
+        if not members:
+            print(f'No members found in the group: {args.group_email}.')
+        else:
+            print(f'Members of group {args.group_email}:')
+            for member in members:
+                print(f"{member['email']} {member['role']}")
+
 
 

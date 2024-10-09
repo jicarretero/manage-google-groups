@@ -50,7 +50,8 @@ def create_group(group_email, group_name, group_description):
         return group
     except Exception as e:
         print(f'An error occurred: {e}')
-        return None
+
+    return None
 
 def list_groups(customer_id='my_customer'):
     """Lists all Google Groups for the current customer."""
@@ -61,15 +62,12 @@ def list_groups(customer_id='my_customer'):
         # Use the Admin SDK to list groups
         results = service.groups().list(customer=customer_id).execute()
         groups = results.get('groups', [])
+        return groups
 
-        if not groups:
-            print('No groups found.')
-        else:
-            print('Groups:')
-            for group in groups:
-                print(f"{group['email']} \"{group['name']}\"")
     except Exception as e:
         print(f'An error occurred: {e}')
+
+    return None
 
 
 def list_group_members(group_email):
@@ -81,15 +79,13 @@ def list_group_members(group_email):
         # Use the Admin SDK to list members
         results = service.members().list(groupKey=group_email).execute()
         members = results.get('members', [])
+        return members
 
-        if not members:
-            print(f'No members found in the group: {group_email}.')
-        else:
-            print(f'Members of group {group_email}:')
-            for member in members:
-                print(f"{member['email']} {member['role']}")
     except Exception as e:
         print(f'An error occurred: {e}')
+
+    return None
+
 
 
 def add_member_to_group(group_email, member_email, role='MEMBER'):

@@ -5,6 +5,7 @@ from googleapiclient.discovery import build
 import argparse
 import json
 
+# Doc: https://developers.google.com/admin-sdk/groups-settings/v1/reference/groups
 
 valid_moderation_levels = ['MODERATE_NON_MEMBERS', 'MODERATE_ALL_MESSAGES', 'MODERATE_NEW_MEMBERS', 'MODERATE_NONE']
 valid_posting_values = ['ANYONE_CAN_POST', 'ALL_IN_DOMAIN_CAN_POST', 'ALL_MANAGERS_CAN_POST', 'NONE_CAN_POST']
